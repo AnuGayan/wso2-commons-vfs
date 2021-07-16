@@ -63,6 +63,7 @@ import org.apache.jackrabbit.webdav.client.methods.PutMethod;
 import org.apache.jackrabbit.webdav.client.methods.UncheckoutMethod;
 import org.apache.jackrabbit.webdav.client.methods.VersionControlMethod;
 import org.apache.jackrabbit.webdav.property.DavProperty;
+import org.apache.jackrabbit.webdav.property.DavPropertyIterator;
 import org.apache.jackrabbit.webdav.property.DavPropertyName;
 import org.apache.jackrabbit.webdav.property.DavPropertyNameSet;
 import org.apache.jackrabbit.webdav.property.DavPropertySet;
@@ -262,14 +263,14 @@ public class WebdavFileObject extends HttpFileObject<WebdavFileSystem> {
             DavPropertySet properties = getProperties(fileName, DavConstants.PROPFIND_ALL_PROP,
                     new DavPropertyNameSet(), false);
             @SuppressWarnings("unchecked") // iterator() is documented to return DavProperty instances
-            final Iterator<DavProperty> iter = properties.iterator();
+            final DavPropertyIterator iter = properties.iterator();
             while (iter.hasNext()) {
                 final DavProperty property = iter.next();
                 attributes.put(property.getName().toString(), property.getValue());
             }
             properties = getPropertyNames(fileName);
             @SuppressWarnings("unchecked") // iterator() is documented to return DavProperty instances
-            final Iterator<DavProperty> iter2 = properties.iterator();
+            final DavPropertyIterator iter2 = properties.iterator();
             while (iter2.hasNext()) {
                 DavProperty property = iter2.next();
                 if (!attributes.containsKey(property.getName().getName())) {

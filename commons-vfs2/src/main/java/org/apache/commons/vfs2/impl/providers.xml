@@ -129,6 +129,11 @@
     <extension-map extension="tgz" scheme="tar"/>
     <extension-map extension="tbz2" scheme="tar"/>
 
+<!--    <provider class-name="org.apache.commons.vfs2.provider.smb.SmbFileProvider">-->
+<!--        <scheme name="smb"/>-->
+<!--        <if-available class-name="jcifs.smb.SmbFile"/>-->
+<!--    </provider>-->
+
     <!--
     <filter-map class-name="org.apache.commons.vfs2.content.bzip2.Bzip2Compress">
         <extension name="bz2"/>
